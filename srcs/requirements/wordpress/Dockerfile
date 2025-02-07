@@ -1,7 +1,7 @@
 FROM debian:latest
 
-RUN apt-get update
-RUN apt-install -y \
+RUN apt update
+RUN apt install -y \
     php-fpm \
     php-mysql\
     wget \
@@ -9,9 +9,14 @@ RUN apt-install -y \
     curl \
     mariadb-client
 
+RUN rm -rf /var/lib/apt/lists/*
+
 RUN wget https://wordpress.org/latest.zip -O /tmp/wordpress.zip
 RUN unzip /tmp/wordpress.zip -d /var/www/
 RUN rm /tmp/wordpress.zip
 RUN chown -R www-data:www-data /var/www/wordpress
 
-RUN rm -rf /var/lib/apt/lists/*
+COPY www.conf /etc/php/8.2/fpm/pool.d/www.conf
+
+CMD ["php-fpm8.2", "-F"]
+
