@@ -4,7 +4,6 @@ RUN	apt-get update
 RUN apt-get install -y nginx openssl
 RUN	apt-get clean
 RUN	rm -rf /var/lib/apt/lists/*
-RUN mkdir -p etc/nginx/nginx.conf
 RUN mkdir etc/nginx/ssl
 RUN openssl req -x509 -newkey rsa:4096\
     -keyout etc/nginx/ssl/private.key \
