@@ -1,18 +1,16 @@
-FROM debian:12
 
-RUN	apt-get update
+FROM debian:11
+
+RUN apt-get update
 RUN apt-get install -y nginx openssl
-RUN	apt-get clean
-RUN	rm -rf /var/lib/apt/lists/*
-RUN mkdir etc/nginx/ssl
-RUN openssl req -x509 -newkey rsa:4096\
-    -keyout etc/nginx/ssl/private.key \
-    -out etc/nginx/ssl/certificate.crt\
-    -days 365 -nodes \
-    -subj "/C=FR/ST=France/L=Lyon/O=42/CN=localhost"
-RUN mkdir -p /var/log/nginx
+RUN mkdir -p /etc/nginx/ssl
+RUN openssl req -x509 -nodes  \
+    -out /etc/nginx/ssl/inception.crt  \
+    -keyout /etc/nginx/ssl/inception.key  \
+    -subj "/C=FR/ST=IDF/L=Lyon/0=42/OU=42/CN=avadlin.42.fr/UID=avaldin"
 
-COPY nginx.conf etc/nginx/nginx.conf
+COPY conf/nginx.conf etc/nginx/nginx.conf
+RUN mkdir -p /var/run/nginx
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;" ]
 

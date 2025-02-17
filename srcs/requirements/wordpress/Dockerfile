@@ -1,22 +1,20 @@
-FROM debian:12
+FROM debian:11
 
-RUN apt update
-RUN apt install -y \
-    php-fpm \
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y --no-install-recommends\
+    wordpress\
+    curl\
+    php-fpm\
     php-mysql\
-    wget \
-    unzip \
-    curl \
-    mariadb-client
+    php-cli
+RUN mkdir -p /run/php/
+RUN chown -R www-data:www-data /run/php/
 
-RUN rm -rf /var/lib/apt/lists/*
+COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+COPY ./tools/wordpress.sh .
+RUN chmod +x wordpress.sh
 
-RUN wget https://wordpress.org/latest.zip -O /tmp/wordpress.zip
-RUN unzip /tmp/wordpress.zip -d /var/www/
-RUN rm /tmp/wordpress.zip
-RUN chown -R www-data:www-data /var/www/wordpress
+ENTRYPOINT ["./wordpress.sh"]
 
-COPY www.conf /etc/php/8.2/fpm/pool.d/www.conf
-
-CMD ["php-fpm8.2", "-F"]
-
+CMD ["php-fpm7.4", "-F"]
