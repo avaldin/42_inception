@@ -5,7 +5,7 @@ up:
 	@mkdir -p ~/data
 	@mkdir -p ~/data/wordpress
 	@mkdir -p ~/data/mariadb
-	docker compose -f srcs/docker-compose.yml up --build
+	docker-compose -f srcs/docker-compose.yml up --build
 
 build:
 	docker-compose -f srcs/docker-compose.yml build --no-cache
