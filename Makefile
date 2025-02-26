@@ -8,19 +8,19 @@ up:
 	docker compose -f srcs/docker-compose.yml up --build
 
 build:
-	docker compose -f srcs/docker-compose.yml build --no-cache
+	docker-compose -f srcs/docker-compose.yml build --no-cache
 
 down:
-	docker compose -f srcs/docker-compose.yml down
+	docker-compose -f srcs/docker-compose.yml down
 
 start:
-	docker compose -f srcs/docker-compose.yml start
+	docker-compose -f srcs/docker-compose.yml start
 
 stop:
 	docker-compose -f srcs/docker-compose.yml stop
 
 prune:
-	docker system prune --all --volumes --force
+	docker-system prune --all --volumes --force
 
 clean:
 	docker-compose -f srcs/docker-compose.yml down --volumes --rmi all
