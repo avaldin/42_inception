@@ -19,7 +19,7 @@ stop:
 	docker-compose -f srcs/docker-compose.yml stop
 
 prune:
-	docker-system prune --all --volumes --force
+	docker system prune --all --volumes --force
 
 clean:
 	docker-compose -f srcs/docker-compose.yml down --volumes --rmi all
