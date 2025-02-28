@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "---------------------------------------------------------------------------------------------------------------------"
+echo "ssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
 if [ -z "$SQL_DATABASE" ] || [ -z "$SQL_USER" ] || [ -z "$SQL_PASSWORD" ] || [ -z "$SQL_ROOT_PASSWORD" ]; then
   echo "One or more required environment variables are not set."
   echo "Please set SQL_DATABASE, SQL_USER, SQL_PASSWORD, and SQL_ROOT_PASSWORD."
@@ -8,7 +8,7 @@ fi
 
 chgrp -R mysql /var/lib/mysql
 chmod -R g+rwx /var/lib/mysql
-echo "=========================================================================================================================================================="
+echo "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 if [ -d "/var/lib/mysql/$SQL_DATABASE" ]; then
   echo "Database already exits"
 else
@@ -18,7 +18,7 @@ if [ ! -d "/var/lib/mysql" ]; then
 fi
 
 service mariadb start
-echo  " oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo                     reepooonnnnd"
+echo  "xcxxxxxcxxxxxxxoooofoooooond"
 mariadb << EOL
 CREATE DATABASE IF NOT EXISTS $SQL_DATABASE;
 CREATE USER IF NOT EXISTS $SQL_USER@'localhost' IDENTIFIED BY "$SQL_PASSWORD";
