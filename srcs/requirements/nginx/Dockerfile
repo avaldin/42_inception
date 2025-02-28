@@ -1,5 +1,5 @@
 
-FROM debian:10
+FROM debian:11
 
 RUN apt-get update
 RUN apt-get install -y nginx openssl
