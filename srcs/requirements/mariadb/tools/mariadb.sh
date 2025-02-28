@@ -26,7 +26,7 @@ GRANT ALL PRIVILEGES ON $SQL_DATABASE.* TO $SQL_USER@'%' IDENTIFIED BY "$SQL_PAS
 SET PASSWORD FOR 'root'@'localhost' = PASSWORD("$SQL_ROOT_PASSWORD");
 FLUSH PRIVILEGES;
 EOL
-
+echo "uuuuuuuuuuuuuuu"
 service mariadb stop
 fi
 exec "$@"
