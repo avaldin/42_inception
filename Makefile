@@ -2,9 +2,8 @@
 all: up
 
 up:
-	@mkdir -p ~/data
-	@mkdir -p ~/data/wordpress
-	@mkdir -p ~/data/mariadb
+	@mkdir -p /home/avaldin/data/wordpress
+	@mkdir -p /home/avaldin/data/mariadb
 	docker-compose -f srcs/docker-compose.yml up --build
 
 build:
