@@ -25,7 +25,7 @@ clean:
 	docker-compose -f srcs/docker-compose.yml down --volumes --rmi all
 
 fclean: clean
-	docker run -it --rm -v $(HOME)/data:/data busybox sh -c "rm -rf /data/*"
+	docker run -it --rm -v avaldin/data:/data busybox sh -c "rm -rf /data/*"
 
 re: fclean up
 
