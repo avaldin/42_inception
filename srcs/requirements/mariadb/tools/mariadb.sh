@@ -18,7 +18,7 @@ if [ ! -d "/var/lib/mysql" ]; then
 fi
 
 service mariadb start
-
+echo  "reepooonnnnd"
 mariadb << EOL
 CREATE DATABASE IF NOT EXISTS $SQL_DATABASE;
 CREATE USER IF NOT EXISTS $SQL_USER@'localhost' IDENTIFIED BY "$SQL_PASSWORD";
